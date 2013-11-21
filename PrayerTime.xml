@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="PrayerTime" width="325" height="300" scaling="false" />
+  <Content type="html">
+  <![CDATA[
+<style>
+body, td, th {font-family: verdana; font-size: 20px; color:#C40000;}
+#timetable {border-width: 1px; border-style: outset; border-collapse: collapse; border-color: #C40000; width: 9em;}
+#timetable td, #timetable th {border-width: 1px; border-spacing: 1px; padding: 2px 4px; border-style: inset; border-color: #C40000;}
+#timetable th {color:#C40000; text-align: center; font-weight: bold;}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="http://praytimes.org/code/v2/js/PrayTimes.js"></script>
+<br>
+<div align="center" id="table"></div>
+<script type="text/javascript">
+	
+var date = new Date(); // today
+prayTimes.setMethod('Makkah'); 
+var times = prayTimes.getTimes(date, [25.2522, 55.2800], 4);
+var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+var html = '<table id="timetable">';
+html += '<tr><th colspan="2">Todays Prayer Time</th></tr>';
+for(var i in list)	{
+html += '<tr><td>'+ list[i]+ '</td>';
+html += '<td>'+ times[list[i].toLowerCase()]+ '</td></tr>';
+	}
+html += '</table>';
+document.getElementById('table').innerHTML = html;
+</script>
+
+
+ ]]>
+  </Content>
+</Module>
